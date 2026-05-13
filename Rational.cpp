@@ -1,15 +1,15 @@
 #include "Rational.h"
 #include <numeric> 
 #include <cmath>
-#include <algorithm> // Для std::swap
+#include <algorithm> 
 
-// Собственная реализация НОД, чтобы не зависеть от версии стандарта
+using namespace std;
 int get_gcd(int a, int b) {
-    a = std::abs(a);
-    b = std::abs(b);
+    a = abs(a);
+    b = abs(b);
     while (b) {
         a %= b;
-        std::swap(a, b);
+        swap(a, b);
     }
     return a;
 }
@@ -18,7 +18,6 @@ void Rational::simplify() {
     if (den == 0) return;
     if (den < 0) { num = -num; den = -den; }
 
-    // Используем нашу функцию get_gcd вместо std::gcd
     int common = get_gcd(num, den);
 
     num /= common;
