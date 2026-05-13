@@ -1,6 +1,8 @@
 #include "Complex.h"
 #include <cmath>
 
+
+using namespace std;
 Complex::Complex() : re(0), im(0) {}
 
 Complex::Complex(double x, double y) : re(x), im(y) {}
@@ -44,12 +46,12 @@ bool Complex::operator<(const Complex& other) const { return this->abs() < other
 bool Complex::operator==(const Complex& other) const { return re == other.re && im == other.im; }
 bool Complex::operator!=(const Complex& other) const { return !(*this == other); }
 
-std::ostream& operator<<(std::ostream& os, const Complex& c) {
+ostream& operator<<(std::ostream& os, const Complex& c) {
     os << c.re << (c.im >= 0 ? " + " : " - ") << std::abs(c.im) << " * i";
     return os;
 }
 
-std::istream& operator>>(std::istream& is, Complex& c) {
+istream& operator>>(std::istream& is, Complex& c) {
     is >> c.re >> c.im;
     return is;
 }
